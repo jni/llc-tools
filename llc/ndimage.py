@@ -1,4 +1,6 @@
 import numba
+from numba import cfunc, carray
+from numba.types import intc, CPointer, float64, intp, voidptr
 from scipy import LowLevelCallable
 
 def jit_filter_function(filter_function):
