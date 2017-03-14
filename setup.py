@@ -10,7 +10,7 @@ MAINTAINER_EMAIL    = 'juan.n@unimelb.edu.au'
 URL                 = 'https://github.com/jni/llc-tools'
 LICENSE             = 'BSD 3-clause'
 DOWNLOAD_URL        = 'https://github.com/jni/llc-tools'
-VERSION             = '0.1.1'
+VERSION             = '0.1.2-dev'
 PYTHON_VERSION      = (3, 6)
 INST_DEPENDENCIES   = {} 
 
