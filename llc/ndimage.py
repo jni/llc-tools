@@ -30,13 +30,12 @@ def jit_filter1d_function(filter_function):
 
 
 def jit_geometric_function(geometric_function):
-    """Decorator for use with scipy.ndimage.geometric_transform."""
     jitted_function = numba.jit(geometric_function, nopython=True)
-    
+
     @cfunc(intc(CPointer(intp), CPointer(float64), intc, intc, voidptr))
     def wrapped(output_ptr, input_ptr, output_rank, input_rank, user_data):
         output_coords = carray(output_ptr, (output_rank,), dtype=intp)
         input_coords = carray(input_ptr, (output_rank,), dtype=float64)
-        input_coords[:] = jitted_function(output_coords)
+        jitted_function(output_coords, input_coords)
         return 1
     return LowLevelCallable(wrapped.ctypes)
