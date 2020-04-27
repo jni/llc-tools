@@ -2,7 +2,7 @@ from setuptools import setup
 
 descr = """LLC tools: prettier LowLevelCallables with SciPy and Numba."""
 
-DISTNAME            = 'llc'
+DISTNAME            = 'llc-tools'
 DESCRIPTION         = 'Prettier LowLevelCallables'
 LONG_DESCRIPTION    = descr
 MAINTAINER          = 'Juan Nunez-Iglesias'
@@ -10,7 +10,7 @@ MAINTAINER_EMAIL    = 'juan.nunez-iglesias@monash.edu'
 URL                 = 'https://github.com/jni/llc-tools'
 LICENSE             = 'BSD 3-clause'
 DOWNLOAD_URL        = 'https://github.com/jni/llc-tools'
-VERSION             = '0.2.0'
+VERSION             = '0.3.0'
 PYTHON_VERSION      = (3, 6)
 INST_DEPENDENCIES   = []
 
