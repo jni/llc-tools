@@ -1,3 +1,4 @@
+import sys
 import numba
 from numba import cfunc, carray
 from numba.core.types import intc, CPointer, float64, intp, voidptr
@@ -13,7 +14,11 @@ def jit_filter_function(filter_function):
         values = carray(values_ptr, (len_values,), dtype=float64)
         result[0] = jitted_function(values)
         return 1
-    return LowLevelCallable(wrapped.ctypes)
+
+    sig = None
+    if sys.platform == "win32":
+        sig = "int (double *, npy_intp, double *, void *)"
+    return LowLevelCallable(wrapped.ctypes, signature=sig)
 
 
 def jit_filter1d_function(filter_function):
@@ -26,7 +31,11 @@ def jit_filter1d_function(filter_function):
         out_values = carray(out_values_ptr, (len_out,), dtype=float64)
         jitted_function(in_values, out_values)
         return 1
-    return LowLevelCallable(wrapped.ctypes)
+
+    sig = None
+    if sys.platform == "win32":
+        sig = "int (double *, npy_intp, double *, npy_intp, void *)"
+    return LowLevelCallable(wrapped.ctypes, signature=sig)
 
 
 def jit_geometric_function(geometric_function):
@@ -38,4 +47,9 @@ def jit_geometric_function(geometric_function):
         input_coords = carray(input_ptr, (output_rank,), dtype=float64)
         jitted_function(output_coords, input_coords)
         return 1
-    return LowLevelCallable(wrapped.ctypes)
+
+    # needs to be tested
+    # sig = None
+    # if sys.platform == "win32":
+    #     sig = "int (double *, double *, int, int, void *)"
+    return LowLevelCallable(wrapped.ctypes, signature=sig)

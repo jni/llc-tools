@@ -1,15 +1,14 @@
 name: llc-test
 channels:
-- conda-forge
+  - conda-forge
 dependencies:
-- python>=3.6*
-- setuptools>=19.6*
-- numba>=0.29
-- numpy>=1.12*
-- numpydoc>=0.5*
-- scipy>=0.19*
-- pytest>=3*
-- coverage>=4.0
-- pytest-cov>=2.2
-- pip:
-  - hypothesis>=3.6
+  - python>=3.8*
+  - setuptools>=19.6*
+  - numba>=0.5
+  - numpy>=1.18*
+  - numpydoc>=0.5*
+  - scipy>=1.6*
+  - pytest>=6*
+  - coverage>=4.0
+  - pytest-cov>=2.2
+  - hypothesis>=5*
